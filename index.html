@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>Engg App</title>
+	<style>
+		*{font-size:40px;font-family:calibri;}
+		body{background-color:azure;}
+		input[type=checkbox]{width:2%; height:0.6em;}
+	</style>
+</head>
+<body>
+	<center>
+		<h1>Engg App</h1>
+		<form onsubmit="show()">
+			<label>Name</label>
+			<input type="text" id="name" placeholder="Enter your name" />
+			<br /> <br />
+			<label>Select Engg Year</label>
+			<select id="Engg">
+				<option value="fe">FE</option>
+				<option value="se">SE</option>
+				<option value="te">TE</option>
+				<option value="be">BE</option>
+			</select>
+			<br /> <br />
+			<input type="submit" />
+		</form>
+		<h2 id="msg" />
+	</center>
+	<script>
+		function show() {
+			event.preventDefault();
+			let name = document.getElementById("name");
+			let Engg = document.getElementById("Engg");
+			
+			let msg = document.getElementById("msg");
+
+			if (name.value === "") {
+				alert("Please enter name");
+				msg.innerHTML = "";
+				name.focus();
+				return;
+			
+			}
+
+			if(!name.value.match("^[A-Za-z ]{2,10}$")) {
+				alert("Name should contain only alphabets");
+				msg.innerHTML = "";
+				name.focus();
+				return;
+			}
+
+			let year = "";
+			if(Engg.value === "fe") year = "First Year"
+			else if(Engg.value === "se") year = "Second Year"
+			else if(Engg.value === "te") year = "Third Year"
+			else if(Engg.value === "be") year = "Final Year"
+			msg.innerHTML = "Name = " + name.value + ", Year = " + year; 
+			
+		}
+	</script>
+</body>
+</html>
